@@ -24,15 +24,18 @@ const wrongLetters: string[] = [];
 
 // fetches the words from an API
 async function getWords() {
-	const res = await fetch(
-		"https://random-word-api.herokuapp.com/word?number=10"
-	);
-	const data = await res.json();
+	try {
+		const res = await fetch(
+			"https://random-word-api.herokuapp.com/word?number=10"
+		);
+		const data = await res.json();
+		words = data;
+		selectedWord = words[Math.floor(Math.random() * words.length)];
 
-	words = data;
-	selectedWord = words[Math.floor(Math.random() * words.length)];
-
-	displayWord();
+		displayWord();
+	} catch (error) {
+		alert('Failed to fetch data, the service might be down :(');
+	}
 }
 
 // Show hidden word
