@@ -26,7 +26,13 @@ const wrongLetters: string[] = [];
 async function getWords() {
 	try {
 		const res = await fetch(
-			"https://random-word-api.herokuapp.com/word?number=10"
+			"https://random-word-api.herokuapp.com/word?number=10",
+			{
+				mode: "no-cors",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			}
 		);
 		const data = await res.json();
 		words = data;
@@ -45,6 +51,8 @@ async function getWords() {
 		];
 		words = data;
 		selectedWord = words[Math.floor(Math.random() * words.length)];
+
+		displayWord();
 	}
 }
 
