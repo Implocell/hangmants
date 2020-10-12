@@ -34,7 +34,17 @@ async function getWords() {
 
 		displayWord();
 	} catch (error) {
-		alert('Failed to fetch data, the service might be down :(');
+		alert("Failed to fetch data, the service might be down :(");
+		const data = [
+			"wizard",
+			"english",
+			"norwegian",
+			"programming",
+			"syntax",
+			"elbow",
+		];
+		words = data;
+		selectedWord = words[Math.floor(Math.random() * words.length)];
 	}
 }
 
